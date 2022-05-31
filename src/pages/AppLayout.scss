@@ -1,0 +1,9 @@
+.main-content {
+  padding-left: 18rem;
+
+  transition: all 0.4s ease-in-out;
+}
+
+nav.is-compact + .main-content {
+  padding-left: 5.5rem;
+}

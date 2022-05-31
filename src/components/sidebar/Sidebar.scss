@@ -1,0 +1,57 @@
+nav {
+  @apply fixed h-full text-white text-base border-r pb-3;
+  width: 18rem;
+  background-color: #101924;
+  border-color: #20325b;
+  transition: all 0.4s ease-in-out;
+}
+nav.is-compact {
+  width: 5.5rem;
+}
+
+nav ul {
+  @apply pb-5 pt-3 mb-3;
+  .nav-header {
+    @apply text-xs font-bold pl-8;
+    width: 18rem;
+    color: rgb(182, 198, 209);
+    letter-spacing: 2px;
+  }
+}
+
+li {
+  @apply h-14 flex items-center justify-start gap-3 cursor-pointer pl-8 hover:text-yellow-400 duration-300 overflow-hidden;
+  width: 18rem;
+  color: rgb(128, 148, 174);
+}
+
+.is-compact .title {
+  transition: all 0.4s ease-in-out;
+  opacity: 0%;
+}
+
+.is-compact ul {
+  @apply border-b;
+  border-color: #20325b;
+}
+/* width */
+::-webkit-scrollbar {
+  transition: all 2s ease-in-out;
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #101924;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  transition: all 2s;
+  border-radius: 10px;
+  opacity: 0 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(72, 87, 105);
+}
