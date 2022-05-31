@@ -2,7 +2,6 @@ import './Header.scss';
 import { useState } from 'react';
 import { FaRegListAlt, FaExternalLinkAlt, FaRegBell } from 'react-icons/fa';
 import ToggleButton from 'react-toggle-button';
-import styles from './toggle.module.css';
 const Header = () => {
   const [mode, setMode] = useState(true);
 
