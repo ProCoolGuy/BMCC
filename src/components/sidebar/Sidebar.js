@@ -163,7 +163,7 @@ const Sidebar = () => {
                 </li>
               </Link>
             ) : (
-              <a href={item.link} target={'_blank'}>
+              <a href={item.link} target={'_blank'} rel='noreferrer'>
                 <li>
                   <div className='text-xl'>{item.icon}</div>
                   <div className='title'>{item.title}</div>
@@ -183,7 +183,7 @@ const Sidebar = () => {
                 </li>
               </Link>
             ) : (
-              <a href={item.link} target={'_blank'}>
+              <a href={item.link} target={'_blank'} rel='noreferrer'>
                 <li>
                   <div className='text-xl'>{item.icon}</div>
                   <div className='title'>{item.title}</div>
@@ -207,7 +207,7 @@ const Sidebar = () => {
         <ul>
           {externalLinks.map((item, index) => {
             return (
-              <a href={item.link} target={'_blank'}>
+              <a href={item.link} target={'_blank'} rel='noreferrer'>
                 <li>
                   <div className='text-xl'>{item.icon}</div>
                   <div className='title'>{item.title}</div>
