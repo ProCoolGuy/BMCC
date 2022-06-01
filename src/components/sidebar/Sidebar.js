@@ -137,8 +137,8 @@ const Sidebar = () => {
     },
   ];
   return (
-    // <nav className={compactState ? 'is-compact' : 'md:is-compact'}>
-    <nav className='md:is-compact'>
+    <nav className={compactState ? 'is-compact' : ''}>
+      {/* <nav className='md:is-compact'> */}
       <div
         className={`h-16 text-sm text-[#b6b6b6] border-b border-[#20325b] flex w-[18rem] justify-start items-center gap-3 pl-8 cursor-pointer`}
       >
