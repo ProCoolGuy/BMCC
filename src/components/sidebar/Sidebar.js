@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import {
   FaBars,
   FaBtc,
@@ -14,6 +15,7 @@ import {
   FaTwitter,
   FaMediumM,
   FaGithubAlt,
+  FaArrowLeft,
 } from 'react-icons/fa';
 import Logo from '../../assets/icons/logo-dark.png';
 import Pancakeswap from '../../assets/icons/pancakeswap.png';
@@ -28,6 +30,9 @@ import Polygon from '../../assets/icons/polygon.png';
 import './Sidebar.scss';
 const Sidebar = () => {
   const [compactState, setCompactState] = useState(false);
+  const [responsiveNavbarState, setResponsiveNavbarState] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  // if (isTabletOrMobile) setCompactState(false);
   const overLists = [
     {
       title: 'Overview',
@@ -69,7 +74,7 @@ const Sidebar = () => {
     {
       title: 'Staking',
       icon: <FaCoins />,
-      link: '',
+      link: '/staking',
     },
     {
       title: 'P2E',
@@ -136,19 +141,29 @@ const Sidebar = () => {
       link: 'https://github.com/TechRate/Smart-Contract-Audits/blob/main/December/BINANCE_MULTI_CHAIN_CAPITAL_Full_Smart_Contract_Security_Audit.pdf',
     },
   ];
-  return (
-    <nav className={compactState ? 'is-compact' : ''}>
-      {/* <nav className='md:is-compact'> */}
+  const navbarLists = (
+    <>
       <div
         className={`h-16 text-sm text-[#b6b6b6] border-b border-[#20325b] flex w-[18rem] justify-start items-center gap-3 pl-8 cursor-pointer`}
       >
-        <div
-          onClick={() => {
-            setCompactState((prev) => !prev);
-          }}
-        >
-          <FaBars className='text-2xl' />
-        </div>
+        {isTabletOrMobile ? (
+          <div
+            onClick={() => {
+              setResponsiveNavbarState(false);
+            }}
+          >
+            <FaArrowLeft className='text-2xl' />
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              setCompactState((prev) => !prev);
+            }}
+          >
+            <FaBars className='text-2xl' />
+          </div>
+        )}
+
         <img src={Logo} alt='Logo' className='h-9 pl-3 cursor-pointer title' />
         <div className='title'>version 0.1 beta</div>
       </div>
@@ -175,7 +190,7 @@ const Sidebar = () => {
         <ul>
           <div className='nav-header title'>NAVIGATION</div>
           {navLists.map((item, index) => {
-            return index === 0 ? (
+            return index !== 0 ? (
               <Link to={item.link}>
                 <li>
                   <div className='text-xl'>{item.icon}</div>
@@ -193,6 +208,7 @@ const Sidebar = () => {
           })}
         </ul>
         <ul>
+          <div className='nav-header title'>FAAS</div>
           {faasLists.map((item, index) => {
             return (
               <Link to={item.link}>
@@ -205,6 +221,7 @@ const Sidebar = () => {
           })}
         </ul>
         <ul>
+          <div className='nav-header title'>EXTERNAL LINKS</div>
           {externalLinks.map((item, index) => {
             return (
               <a href={item.link} target={'_blank'} rel='noreferrer'>
@@ -217,7 +234,31 @@ const Sidebar = () => {
           })}
         </ul>
       </div>
-    </nav>
+    </>
+  );
+  return isTabletOrMobile ? (
+    <>
+      <div className='absolute flex flex-row gap-3 justify-start items-center h-16 w-auto left-10 top-0 z-20'>
+        <FaBars
+          className='text-xl text-[#b6b6b6] cursor-pointer'
+          onClick={() => {
+            setResponsiveNavbarState(!responsiveNavbarState);
+          }}
+        />
+        <img src={Logo} alt='Logo' className='h-9 pl-3 cursor-pointer' />
+      </div>
+      <nav
+        className={
+          !responsiveNavbarState
+            ? 'responsive-nav navbar-close'
+            : 'responsive-nav navbar-open'
+        }
+      >
+        {navbarLists}
+      </nav>
+    </>
+  ) : (
+    <nav className={compactState ? 'is-compact' : ''}>{navbarLists}</nav>
   );
 };
 

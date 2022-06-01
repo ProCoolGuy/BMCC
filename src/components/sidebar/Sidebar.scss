@@ -38,6 +38,18 @@ li {
   @apply border-b;
   border-color: #20325b;
 }
+
+.responsive-nav {
+  top: 0;
+}
+
+nav.navbar-close {
+  left: -18rem;
+}
+
+nav.navbar-open {
+  left: 0rem;
+}
 /* width */
 ::-webkit-scrollbar {
   transition: all 2s ease-in-out;
