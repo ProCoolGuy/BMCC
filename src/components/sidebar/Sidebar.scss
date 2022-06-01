@@ -1,5 +1,5 @@
 nav {
-  @apply fixed h-full text-white text-base border-r pb-3;
+  @apply fixed h-full text-white text-base border-r pb-3 z-20;
   width: 18rem;
   background-color: #101924;
   border-color: #20325b;
@@ -28,6 +28,10 @@ li {
 .is-compact .title {
   transition: all 0.4s ease-in-out;
   opacity: 0%;
+}
+
+.is-compact:hover .title {
+  opacity: 1;
 }
 
 .is-compact ul {

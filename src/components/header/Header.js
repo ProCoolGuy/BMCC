@@ -1,43 +1,22 @@
 import './Header.scss';
 import { useState } from 'react';
 import { FaRegListAlt, FaExternalLinkAlt, FaRegBell } from 'react-icons/fa';
-import ToggleButton from 'react-toggle-button';
+// import ToggleButton from 'react-toggle-button';
+import ToggleSwitch from '../toggle';
 const Header = () => {
   const [mode, setMode] = useState(true);
 
   return (
     <>
       <header>
-        <FaRegListAlt className='text-yellow-400 text-2xl' />
-        <div>Binance Multi-chain Capital</div>
-        <FaExternalLinkAlt className='text-xs text-gray-500 hover:text-yellow-400 cursor-pointer' />
+        <div className='header-item flex flex-row gap-3 justify-center items-center  cursor-pointer'>
+          <FaRegListAlt className='text-yellow-400 text-2xl' />
+          <div>Binance Multi-chain Capital</div>
+          <FaExternalLinkAlt className='text-xs text-gray-500 externallink' />
+        </div>
       </header>
       <div className='gap-5 flex flex-row items-center justify-center absolute h-16 text-white right-10 text-base'>
-        Mode
-        <ToggleButton
-          inactiveLabel={''}
-          activeLabel={''}
-          colors={{
-            activeThumb: {
-              base: 'rgb(250,250,250)',
-            },
-            inactiveThumb: {
-              base: 'rgb(206,206,206)',
-            },
-            active: {
-              base: 'rgb(207,221,0)',
-              hover: 'rgb(177, 191, 0)',
-            },
-            inactive: {
-              base: 'rgb(250,250,250)',
-              hover: 'rgb(250,250,250)',
-            },
-          }}
-          value={mode || false}
-          onToggle={(mode) => {
-            setMode(!mode);
-          }}
-        />
+        {/* <ToggleSwitch /> */}
         <FaRegBell className='text-gray-500 text-lg' />
       </div>
     </>
